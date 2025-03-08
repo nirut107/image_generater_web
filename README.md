@@ -30,6 +30,7 @@ Create account on cloudflare.com
 add your Cloudflare API token and account ID and Discord webhook URL:
 
 CLOUDFLARE_API_TOKEN=your_cloudflare_api_token
+
 CLOUDFLARE_API_ID=your_cloudflare_account_id
 
 ## Run
