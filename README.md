@@ -26,8 +26,11 @@ pip install -r requirements.txt
 ## Configuration
 
 Create a .env file in add directory
+
 Create account on cloudflare.com
+
 add your Cloudflare API token and account ID and Discord webhook URL:
+
 
 CLOUDFLARE_API_TOKEN=your_cloudflare_api_token
 
