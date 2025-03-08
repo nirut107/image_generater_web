@@ -1,0 +1,46 @@
+<div class="grid grid-cols-2 gap-4">
+    <div class="p-4 border rounded shadow-lg bg-white">
+        <img src="{{ image_url }}" alt="Generated Card" class="w-full rounded">
+        <p class="mt-2 text-lg font-bold text-black">{{ text }}</p>
+        <form class="mt-4" hx-post="/send_webhook" hx-target="this" hx-swap="outerHTML">
+            <input type="hidden" name="image_url" value="{{ image_url }}">
+            <input type="hidden" name="text" value="{{ text }}">
+			<input type="hidden" name="number" value="1">
+            <input class="cosmic-input w-full p-3 rounded mb-6" required name="url" placeholder="your discord webhook url..">
+            <button type="submit" class="relative flex items-center justify-around w-full my-2 bg-pink-500 hover:bg-pink-900 text-white px-4 py-2 rounded disabled:opacity-50">
+                <span class="htmx-indicator:hidden font-bold text-white">Send to Discord</span>
+                <div class="htmx-indicator absolute right-4">
+                    <svg class="w-5 h-5 animate-spin text-white" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0H4z"></path>
+                    </svg>
+                </div>
+            </button>
+        </form>
+    </div>
+
+    <div class="p-4 border rounded shadow-lg bg-white">
+        <img src="{{ image_url2 }}" alt="Generated Card" class="w-full rounded">
+        <p class="mt-2 text-lg font-bold text-black">{{ text }}</p>
+        <form class="mt-4" hx-post="/send_webhook" hx-target="this" hx-swap="outerHTML">
+            <input type="hidden" name="image_url" value="{{ image_url2 }}">
+            <input type="hidden" name="text" value="{{ text }}">
+			<input type="hidden" name="number" value="2">
+            <input class="cosmic-input w-full p-3 rounded mb-6" required name="url" placeholder="your discord webhook url..">
+            <button type="submit" class="relative flex items-center justify-around w-full my-2 bg-pink-500 hover:bg-pink-900 text-white px-4 py-2 rounded disabled:opacity-50">
+                <span class="htmx-indicator:hidden font-bold text-white">Send to Discord</span>
+                <div class="htmx-indicator absolute right-4">
+                    <svg class="w-5 h-5 animate-spin text-white" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0H4z"></path>
+                    </svg>
+                </div>
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Create Another Card -->
+<div class="mt-4 text-center">
+    <a class="font-bold text-white" href="/">Create Another Card</a>
+</div>

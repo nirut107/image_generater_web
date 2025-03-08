@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital 8 March Card</title>
+    <script src="https://unpkg.com/htmx.org@1.9.5"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+        
+        body {
+            background-color: #000000;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
+            background-size: 550px 550px, 350px 350px;
+            background-position: 0 0, 40px 60px;
+            font-family: 'Orbitron', sans-serif;
+            overflow: hidden;
+        }
+        
+        .poster-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(180deg, 
+                rgba(0,0,0,0.9) 0%, 
+                rgba(20,10,50,0.8) 40%, 
+                rgba(50,20,100,0.7) 60%, 
+                rgba(20,10,50,0.8) 80%, 
+                rgba(0,0,0,0.9) 100%);
+            overflow: hidden;
+        }
+        
+        .light-beam {
+            position: absolute;
+            width: 200px;
+            height: 150vh;
+            background: linear-gradient(to bottom, 
+                rgba(255,255,255,0) 0%, 
+                rgba(160,120,255,0.1) 15%, 
+                rgba(160,120,255,0.3) 50%, 
+                rgba(160,120,255,0.1) 85%, 
+                rgba(255,255,255,0) 100%);
+            transform: rotate(30deg);
+            filter: blur(10px);
+            opacity: 0.6;
+        }
+        
+        .title-glow {
+            text-shadow: 0 0 10px rgba(150, 100, 255, 0.8),
+                         0 0 20px rgba(150, 100, 255, 0.5),
+                         0 0 30px rgba(150, 100, 255, 0.3);
+        }
+        
+        .poster-form {
+            backdrop-filter: blur(8px);
+            background-color: rgba(20, 10, 40, 0.7);
+            border: 1px solid rgba(150, 100, 255, 0.5);
+            box-shadow: 0 0 30px rgba(150, 100, 255, 0.3);
+        }
+        
+        .cosmic-button {
+            background: linear-gradient(135deg, #4a27a3, #7b49e5);
+            box-shadow: 0 0 15px rgba(150, 100, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .cosmic-button:hover {
+            background: linear-gradient(135deg, #7b49e5, #4a27a3);
+            box-shadow: 0 0 25px rgba(150, 100, 255, 0.8);
+            transform: translateY(-2px);
+        }
+        
+        .cosmic-input {
+            background-color: rgba(30, 15, 60, 0.7);
+            border: 1px solid rgba(150, 100, 255, 0.5);
+            color: white;
+            letter-spacing: 1px;
+        }
+        
+        .cosmic-input::placeholder {
+            color: rgba(180, 160, 255, 0.6);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="poster-container flex justify-center items-center">
+        <div class="light-beam" style="left: 10%; top: -20%;"></div>
+        <div class="light-beam" style="left: 40%; top: -10%;"></div>
+        <div class="light-beam" style="right: 20%; top: -15%;"></div>
+        
+        
+        <div id="form" class="poster-form p-8 rounded-lg w-96 text-center z-10">
+            <h1 class="text-3xl font-bold text-white mb-6 title-glow">COSMIC<br>CELEBRATION</h1>
+            <p class="text-indigo-300 mb-6">IMAGE • GENERATE</p>
+            
+            <form class=" mt-4" hx-post="/generate_card" hx-target="this" hx-swap="outerHTML">
+                <input type="text" name="prompt" placeholder="ENTER PROMPT" class="cosmic-input w-full p-3 rounded mb-4" required>
+                <input type="text" name="message" placeholder="YOUR MESSAGE..." class="cosmic-input w-full p-3 rounded mb-6" required>
+
+                <button type="submit" class="text-white cosmic-button relative flex items-center justify-center w-full py-3 rounded disabled:opacity-50">
+                    <span>GENERATE CARD</span>
+                    <div class="htmx-indicator absolute right-4">
+                        <svg class="w-5 h-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                            </circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 0116 0H4z"></path>
+                        </svg>
+                    </div>
+                </button>
+            </form>
+            <div id="card"></div>
+        </div>
+    </div>
+</body>
+
+</html>
